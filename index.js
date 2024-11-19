@@ -1,11 +1,13 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const logger = require("./config/logger/logger.config");
 const authRouter = require("./routes/auth.router");
 const { mongoConnect, mongoDisconnect } = require("./config/db/db.connection");
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRouter);
 
